@@ -3,24 +3,18 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
+  const phoneNumber = '917000220574';
+
   const handleWhatsAppRedirect = (message) => {
-    const phoneNumber = '917000220574';
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
-  };
-
-  const handleBooking = () => {
-    handleWhatsAppRedirect("Hello Travel Tribe, I'd like to book a ride.");
-  };
-
-  const handleContact = () => {
-    handleWhatsAppRedirect("Hello Travel Tribe, I have a question.");
   };
 
   return (
     <section id="home" className="hero-gradient min-h-screen flex items-center pt-20">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Text and Buttons */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -36,15 +30,29 @@ const Hero = () => {
               Perfect for family trips, business travel, or special occasions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button onClick={handleBooking} size="lg" className="bg-yellow-400 text-purple-900 hover:bg-yellow-300 font-bold text-lg px-8 py-4">
+              <Button
+                onClick={() =>
+                  handleWhatsAppRedirect("Hello Travel Tribe, I'd like to book a ride.")
+                }
+                size="lg"
+                className="bg-yellow-400 text-purple-900 hover:bg-yellow-300 font-bold text-lg px-8 py-4"
+              >
                 Book Your Ride
               </Button>
-              <Button onClick={handleContact} variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-purple-600 font-bold text-lg px-8 py-4">
+              <Button
+                onClick={() =>
+                  handleWhatsAppRedirect("Hello Travel Tribe, I have a question.")
+                }
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-purple-600 font-bold text-lg px-8 py-4"
+              >
                 Call Now
               </Button>
             </div>
           </motion.div>
 
+          {/* Image */}
           <motion.div
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -52,7 +60,12 @@ const Hero = () => {
             className="relative"
           >
             <div className="relative z-10">
-              <img  alt="Premium car rental fleet showcasing Hyundai Aura and Maruti Ertiga" className="w-full h-auto rounded-2xl shadow-2xl" src="https://www.hertz.com/content/dam/hertz/global/blog-articles/resources/car-rental-tips.jpg" />
+              <img
+                src="https://www.hertz.com/content/dam/hertz/global/blog-articles/resources/car-rental-tips.jpg"
+                alt="Premium rental cars - Hyundai Aura, Maruti Ertiga and more"
+                className="w-full h-auto rounded-2xl shadow-2xl"
+                loading="lazy"
+              />
             </div>
             <div className="absolute -top-4 -right-4 w-full h-full bg-gradient-to-br from-yellow-400 to-pink-400 rounded-2xl opacity-20"></div>
           </motion.div>
