@@ -190,7 +190,8 @@ logger.error = (msg, options) => {
 }
 
 export default defineConfig({
-	base: '/travel-tribe/',
+	base: '/',
+
 	customLogger: logger,
 	plugins: [
 		...(isDev ? [inlineEditPlugin(), editModeDevPlugin()] : []),
